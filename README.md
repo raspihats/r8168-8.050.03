@@ -10,8 +10,18 @@ Network Interface Controllers > 10/100/1000M Gigabit Ethernet > PCI Express
  - RTL8168B/RTL8168E/RTL8168H
  - RTL8111DP/RTL8111EP/RTL8111FP
  - RTL8411/RTL8411B
- 
+
  This is the Linux device driver released for RealTek RTL8168B/8111B, RTL8168C/8111C, RTL8168CP/8111CP, RTL8168D/8111D, RTL8168DP/8111DP, and RTL8168E/8111E Gigabit Ethernet controllers with PCI-Express interface.
+
+ This driver was modified to work with the LEDs on the SGII-CM4CB.
+
+ After building and installing this driver, see below, you may be needing to backlist the r8169 driver that comes with the latest Raspberry Pi OS kernel like so:
+
+ `sudo nano /etc/modprobe.d/raspi-blacklist.conf`
+
+ And add the following line:
+
+ `backlist r8169`
 
 ## Requirements
 
