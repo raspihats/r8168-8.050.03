@@ -27856,6 +27856,10 @@ rtl8168_hw_config(struct net_device *dev)
                         mac_ocp_data &= ~(BIT_8 | BIT_7 | BIT_6 | BIT_5 | BIT_4 | BIT_3 | BIT_2 | BIT_1 | BIT_0);
                         mac_ocp_data |= 0x17F;
                         rtl8168_mac_ocp_write(tp, 0xE0D6, mac_ocp_data);
+
+                        // LED0(Yellow) - ON for Link_100 + Link_1000, OFF for Link_10
+                        // LED1(Green) - ON for Act_10 + Act_100 + Act_1000, OFF for no activity
+                        RTL_W16(tp, CustomLED, 0x00F6);
                 }
 
                 RTL_W8(tp, Config3, RTL_R8(tp, Config3) & ~Beacon_en);
